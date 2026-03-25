@@ -39,6 +39,7 @@ create table ReservationDetails (
 	constraint FK_ReservationDetails_Car foreign key (CarId) references Car(CarId)
 	);
 
+go
 
 /* Populate Data */
 
@@ -66,6 +67,8 @@ begin
 	end
 	set @CarId = @CarId + 1;
 end
+
+go
 
 
 /* Stored Procedure - sp_ReserveCar */
@@ -105,6 +108,8 @@ begin
 	end
 end;
 
+go
+
 /* Stored procedure test */ 
 -- Test 1: Reserve Car 1 from Feb 5-7
 exec sp_ReserveCar @CarId = 1, @ReservationStartDate = '2026-02-05', @ReservationEndDate = '2026-02-07';
@@ -124,6 +129,7 @@ exec sp_ReserveCar @CarId = 3, @ReservationStartDate = '2026-02-15', @Reservatio
 -- Test 6: Reserve Car 3 for Feb 11-17
 exec sp_ReserveCar @CarId = 3, @ReservationStartDate = '2026-02-11', @ReservationEndDate = '2026-02-17';
 
+go
 
 
 /* SQL Queries */ 
